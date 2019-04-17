@@ -1,0 +1,26 @@
+{
+  "name": "ticketvendor",
+  "version": "1.0.0",
+  "description": "Event ticket seller",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server/server",
+    "server": "nodemon server/server"
+  },
+  "keywords": [
+    "ticketvendor"
+  ],
+  "author": "Daniel de Jong",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "handlebars": "^4.1.2",
+    "mongoose": "^5.5.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
