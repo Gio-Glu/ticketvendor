@@ -9,6 +9,7 @@ const passport = require("passport");
 const hbs = require("handlebars");
 const ehbs = require("express-handlebars");
 const bcrypt = require("bcryptjs");
+const Event = require("../database/models/Event");
 
 //logging middleware
 app.use((req, res, next) => {
@@ -39,18 +40,18 @@ require("../config/passport")(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Home Route
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
 //routes setup
+const homeRoute = require("./routes/index");
 const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/user");
 const eventRoute = require("./routes/event");
+app.use("/", homeRoute);
 app.use("/ticketvendoradmin", adminRoute);
 app.use("/auth", userRoute);
 app.use("/event", eventRoute);
+app.get("/test", (req, res) => {
+  res.status(200).send("Hello world");
+});
 
 app.listen(3000, () => {
   console.log("Server listening on http://localhost:3000");
