@@ -1,19 +1,25 @@
+@font-face {
+  src: url("https://fonts.googleapis.com/css?family=Roboto");
+  font-family: Roboto;
+}
 * {
-  font-family: "Times New Roman", Times, serif;
-
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #align_headerbar {
   width: 100%;
-  height: 200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 100px;
 }
 
 #logo {
-  width: 30%;
-  height: 100%;
   display: inline-block;
-  float: left;
+  color: #fefefe;
 }
 
 #logo img {
@@ -24,19 +30,21 @@
 
 #login_reg_button {
   margin-top: 1%;
-  display: inline-block;
+  display: grid;
   float: right;
-  text-align: right;
   margin-right: 3%;
-  width: 50%;
+  grid-template-columns: 1fr 1fr;
 }
 
 #login_reg_button a {
+  text-align: right;
   text-decoration: none;
   color: white;
-  font-size: 30px;
-  margin-left: 5%;
-  font-weight: bold;
+  font-size: 1em;
+  float: left;
+}
+#login_reg_button a:hover {
+  color: #ccc;
 }
 
 #background_boven {
@@ -46,7 +54,6 @@
 
 #myVideo {
   z-index: -1;
-  /* position: fixed; */
   right: 0;
   position: absolute;
   bottom: 0;
@@ -112,15 +119,18 @@ button[type="submit"] {
   width: 50%;
   margin-left: 25%;
   height: 501px;
-  font-size: 50px;
   text-align: center;
-  color: white;
   font-weight: bold;
+  color: #fff;
 }
-
+#bar h6 {
+  color: #555;
+  font-size: 2em;
+}
 #bar {
+  padding: 50px;
   width: 100%;
-  height: 100px;
+  text-align: center;
 }
 
 #content {
@@ -133,11 +143,15 @@ button[type="submit"] {
 #content_aligin {
   margin-left: 12.5%;
   width: 75%;
-  height: auto;
-  background-color: white;
+  margin-top: 50px;
+  margin-left: 12.5%;
+  background-color: #edecec;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2.5%;
+}
+#content_align a {
+  text-decoration: none;
 }
 @media (min-width: 320px) and (max-width: 760px) {
   #content_aligin {
@@ -150,91 +164,21 @@ button[type="submit"] {
   }
 }
 .card {
-  border-style: solid;
-  min-height: 450px;
+  box-shadow: 0px 0px 42px -9px #555;
   margin-left: 2.5%;
   margin-top: 2.5%;
+  text-decoration: none;
 }
 
-.card_image {
-  width: 80%;
-  margin-left: 10%;
-  height: auto;
-  margin-top: 10px;
-}
-
-.card_image img {
-  border: 3px inset;
+.card img {
   width: 100%;
   height: auto;
 }
-
-.date {
-  border-radius: 20%;
-  width: 5%;
-  text-align: center;
-  height: 50px;
-  position: absolute;
-  border: 2px solid black;
-  margin-top: 12%;
-  background-color: darkgray;
-  margin-left: 4%;
-}
-
-.date_text {
-  margin-top: 15%;
-}
-
-#info_post {
-  margin-top: 8%;
-}
-
-.text_info {
-  float: right;
-  width: 88%;
-  height: 30px;
-  text-align: left;
-}
-
-.info_icon {
-  float: left;
-  width: 10%;
-  height: 30px;
-}
-
-.info {
-  border: 1px dotted black;
-  clear: both;
-  margin-left: 5%;
-  height: 30px;
-  margin-top: 5%;
-  width: 90%;
-}
-
-.text_info p {
-  font-size: 20px;
-}
-
-@media only screen and (max-width: 800px) {
-  #title_aligin {
-    width: 70%;
-    margin-left: 15%;
-    height: 501px;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  #title_aligin {
-    width: 90%;
-    margin-left: 5%;
-    height: 501px;
-  }
-
-  #logo img {
-    width: 100%;
-    height: 100%;
-    margin-left: 21%;
-  }
+.card h3 {
+  width: 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1.5em;
 }
 
 @media only screen and (max-width: 320px) {
@@ -271,4 +215,40 @@ a:visited,
 a:hover,
 a:active {
   color: inherit;
+}
+/*detail page*/
+#detail-cont {
+  padding-top: 50px;
+  width: 100%;
+  background: rgb(39, 95, 199);
+  min-height: 100vh;
+}
+#event {
+  padding: 0 15px 15px;
+  width: 95%;
+  margin-left: 2.5%;
+  background: #ededed;
+}
+#event h1 {
+  padding: 20px;
+  font-size: 1.5em;
+}
+#event img {
+  width: 100%;
+  height: auto;
+}
+#event p {
+  font-size: 1em;
+}
+#inf-cont {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  font-weight: bold;
+}
+#location-container,
+#date-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

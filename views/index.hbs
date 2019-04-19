@@ -19,15 +19,13 @@
                 </video>
                 <div id="align_headerbar">
                     <div id="logo">
-                        <figure> <img src="img/logo-ex-7.png"></figure>
+                        <h1>Ticketvendor</h1>
                     </div>
                     <!--navbar-->
 
                     <div id="login_reg_button">
-                        <a href="">Service en Contact</a>
                         <a href="/auth/login">login</a>
                         <a href="/auth/register">Register</a>
-
                     </div>
                     <!--navbar-->
 
@@ -40,10 +38,9 @@
 
                         <input type="search" name="search" placeholder="Zoeken naar evenementen, locaties en steden"
                             class="search">
-                    </form><br><br>
+                    </form>
 
-                    <h6>View events</h6>
-                    <a href=""> <i class="fa fa-chevron-down"></i> </a>
+
                 </div>
                 <!--Search-->
 
@@ -54,17 +51,20 @@
         <!--end boven gedeelte-->
         <main>
             <div id="bar">
-
+                <h6>Upcoming events</h6>
+                <a href=""> <i class="fa fa-chevron-down"></i> </a>
             </div>
             <div id="content">
                 <div id="content_aligin">
-                    {{#each events}}
-                    {{#each this}}
-                    <div class="card">
-                        <h1>hou je smoel</h1>
-                    </div>
-                    {{/each}}
-                    {{/each}}
+                    {{#events}}
+                    <a href="http://localhost:3000/detail/{{this.eventName}}">
+                        <div class="card">
+                            <img alt="event banner" src={{this.eventImage}}>
+                            <h3>{{this.eventName}}</h3>
+                            <p>{{this.eventDate}}</p>
+                        </div>
+                    </a>
+                    {{/events}}
                 </div>
         </main>
 

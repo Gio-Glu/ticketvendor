@@ -21,28 +21,30 @@ router.post(
   //   },
   (req, res) => {
     //Check if Event name is in use or not
-    Event.find({ eventName: req.body.name }).then(event => {
+    Event.findOne({ eventName: req.body.name }).then(event => {
       if (event)
         return res.status(400).json({ eMsg: "Event name already in use." });
       const newEvent = new Event({
-        eventName: req.body.name,
+        eventName: req.body.eventName,
         tickets: req.body.tickets,
         ticketPrice: req.body.ticketPrice,
         location: req.body.location,
-        date: req.body.date,
-        category: req.body.category
+        eventDate: req.body.eventDate,
+        category: req.body.category,
+        description: req.body.description
       });
       newEvent
         .save()
         .then(event =>
           res.status(200).json({ message: "Succesfully added Event" })
-        );
+        )
+        .catch(e => console.log(e));
     });
   }
 );
 
 //Route to delete an event
-router.delete("/deleteEvent/:id", () => {
+router.delete("/deletevent/:id", (req, res) => {
   Event.findByIdAndDelete({ _id: req.params.id })
     .then(event => {
       res.status(200).json({ message: "Event deleted succesfully" });

@@ -19,14 +19,24 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date: {
-    type: Date,
+  eventDate: {
+    type: String,
     required: true
   },
   category: {
     type: String,
     required: true,
     default: "concert"
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  eventImage: {
+    type: String,
+    required: true,
+    default:
+      "https://www.awakeningsfestival.nl/extend/assets/images/mobile/share_19.png"
   }
 });
 

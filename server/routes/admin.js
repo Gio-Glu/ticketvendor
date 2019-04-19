@@ -21,11 +21,11 @@ router.post(
   })
 );
 router.post("/addadmin", (req, res) => {
-  User.find({ username: req.body.username, role: "admin" }).then(admin => {
+  User.findOne({ username: req.body.username, role: "admin" }).then(admin => {
     if (admin) {
       return res.status(400).json({ message: "Username already exists" });
     } else {
-      User.find({ email: req.body.email }).then(admin => {
+      User.findOne({ email: req.body.email }).then(admin => {
         if (admin) {
           return res.status(400).json({ message: "Email is already in use" });
         } else {
