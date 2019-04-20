@@ -10,70 +10,53 @@
 </head>
 
 <body>
-    <div id="container">
-        <header>
-            <!--boven gedeelte-->
-            <div id="background_boven">
-                <video autoplay muted loop id="myVideo">
-                    <source src="img/background.mp4" type="video/mp4">
-                </video>
-                <div id="align_headerbar">
-                    <div id="logo">
-                        <h1>Ticketvendor</h1>
-                    </div>
-                    <!--navbar-->
-
-                    <div id="login_reg_button">
-                        <a href="/auth/login">login</a>
-                        <a href="/auth/register">Register</a>
-                    </div>
-                    <!--navbar-->
-
-                </div>
-                <div id="title_aligin">
-                    <p>Veilig e-tickets kopen en verkopen
-                    </p>
-                    <form action="/action_page.php">
+    <header>
+        <!--boven gedeelte-->
+        <video autoplay muted loop id="myVideo">
+            <source src="img/background.mp4" type="video/mp4">
+        </video>
+        {{>nav}}
+        <div id="title_align">
+            <p>Veilig e-tickets kopen en verkopen</p>
+            {{!-- <form action="/action_page.php">
                         <button type="submit"><i type="submit" class="fa fa-search button_submit"></i></button>
 
                         <input type="search" name="search" placeholder="Zoeken naar evenementen, locaties en steden"
                             class="search">
-                    </form>
+                    </form> --}}
 
 
-                </div>
-                <!--Search-->
+        </div>
+        <!--Search-->
 
-                <!--End Search-->
+        <!--End Search-->
 
+    </header>
+    <!--end boven gedeelte-->
+    <main>
+        <div id="bar">
+            <h6>Upcoming events</h6>
+            <a href=""> <i class="fa fa-chevron-down"></i> </a>
+        </div>
+        <div id="content">
+            <div id="content_aligin">
+                {{#events}}
+                <a href="http://localhost:3000/detail/{{this.eventName}}">
+                    <div class="card">
+                        <img alt="event banner" src={{this.eventImage}}>
+                        <h3>{{this.eventName}}</h3>
+                        <p>{{this.eventDate}}</p>
+                    </div>
+                </a>
+                {{/events}}
             </div>
-        </header>
-        <!--end boven gedeelte-->
-        <main>
-            <div id="bar">
-                <h6>Upcoming events</h6>
-                <a href=""> <i class="fa fa-chevron-down"></i> </a>
-            </div>
-            <div id="content">
-                <div id="content_aligin">
-                    {{#events}}
-                    <a href="http://localhost:3000/detail/{{this.eventName}}">
-                        <div class="card">
-                            <img alt="event banner" src={{this.eventImage}}>
-                            <h3>{{this.eventName}}</h3>
-                            <p>{{this.eventDate}}</p>
-                        </div>
-                    </a>
-                    {{/events}}
-                </div>
-        </main>
+    </main>
 
 
-        <footer>
+    <footer>
 
 
-        </footer>
-    </div>
+    </footer>
 
 
 </body>

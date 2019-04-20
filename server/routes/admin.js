@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const User = require("../../database/models/User");
+const Event = require("../../database/models/Event");
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -56,7 +57,17 @@ router.post("/addadmin", (req, res) => {
 });
 
 router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+  Event.find().then(events => {
+    User.find({ role: "admin" }).then(admins => {
+      User.find({ role: "user" }).then(users => {
+        res.render("dashboard", {
+          events,
+          admins,
+          users
+        });
+      });
+    });
+  });
 });
 
 module.exports = router;

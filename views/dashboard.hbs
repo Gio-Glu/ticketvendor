@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="container">
+        <aside>
+            <h5 id="homeLink">Ticketvendor</h5>
+            <ul>
+                <li class="navlink">Events</li>
+                <li class="navlink">Users</li>
+                <li class="navlink">Admins</li>
+            </ul>
+        </aside>
+        <main>
+            <div id="landing">
+                <h1>Welcome Admin</h1>
+            </div>
+            <div id="events">{{#events}}
+                <div class="dashevent">
+                    <div><img src={{this.eventImage}}></div>
+                    <div>
+                        <h5>{{this.eventName}}</h5>
+                    </div>
+                </div>
+                {{/events}}
+                <div></div>
+
+            </div>
+            <div id="users">
+                {{#users}}
+                <p>{{this.username}}</p>
+                <a href="">Delete {{this.username}}</a>
+                {{/users}}</div>
+            <div id="admins"></div>
+
+
+
+
+        </main>
+
+
+    </div>
+    <script src="../js/dashboard.js"></script>
+</body>
+
+</html>
