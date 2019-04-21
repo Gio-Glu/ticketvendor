@@ -38,9 +38,6 @@ app.set("view options", { layout: false });
 
 // Passport Config
 require("../config/passport")(passport);
-// Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
 
 //session setup
 app.use(
@@ -50,6 +47,9 @@ app.use(
     saveUninitialized: true
   })
 );
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //flash setup
 app.use(flash());

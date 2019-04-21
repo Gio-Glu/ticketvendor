@@ -2,21 +2,21 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("../database/models/User");
 const bcrypt = require("bcryptjs");
 
-module.exports = function(passport) {
+module.exports = passport => {
   // Local Strategy
   passport.use(
     "adminLogin",
-    new LocalStrategy(function(username, password, done) {
+    new LocalStrategy((username, password, done) => {
       // Match Username
       let query = { username: username, role: "admin" };
-      User.findOne(query, function(err, user) {
+      User.findOne(query, (err, user) => {
         if (err) throw err;
         if (!user) {
           return done(null, false, { message: "No user found" });
         }
 
         // Match Password
-        bcrypt.compare(password, user.password, function(err, isMatch) {
+        bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
           if (isMatch) {
             return done(null, user);
@@ -29,17 +29,17 @@ module.exports = function(passport) {
   );
   passport.use(
     "userLogin",
-    new LocalStrategy(function(username, password, done) {
+    new LocalStrategy((username, password, done) => {
       // Match Username
       let query = { username: username, role: "user" };
-      User.findOne(query, function(err, user) {
+      User.findOne(query, (err, user) => {
         if (err) throw err;
         if (!user) {
           return done(null, false, { message: "No user found" });
         }
 
         // Match Password
-        bcrypt.compare(password, user.password, function(err, isMatch) {
+        bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
           if (isMatch) {
             return done(null, user);
@@ -50,4 +50,13 @@ module.exports = function(passport) {
       });
     })
   );
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
+      done(err, user);
+    });
+  });
 };

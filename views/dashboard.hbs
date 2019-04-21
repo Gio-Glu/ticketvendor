@@ -20,21 +20,40 @@
             <div id="landing">
                 <h1>Welcome Admin</h1>
             </div>
-            <div id="events">{{#events}}
-                <div class="dashevent">
-                    <div><img src={{this.eventImage}}></div>
-                    <div>
-                        <h5>{{this.eventName}}</h5>
+            <div id="events">
+                <div>
+                    {{#events}}
+
+                    <div class="dashevent">
+                        <div><img src={{this.eventImage}}></div>
+                        <div>
+                            <h5>{{this.eventName}}</h5>
+                            <a href="/event/deletevent/{{this._id}}">delete this event</a>
+                        </div>
                     </div>
+                    {{/events}}
                 </div>
-                {{/events}}
-                <div></div>
+                <div>
+                    <form id="newEventForm">
+                        <input>
+                        <input>
+                        <input>
+                        <input>
+                        <input>
+                        <input>
+                        <textarea></textarea>
+                        <button type="submit">Add new event</button>
+                    </form>
+                    <div id="result"></div>
+                </div>
 
             </div>
             <div id="users">
                 {{#users}}
-                <p>{{this.username}}</p>
-                <a href="">Delete {{this.username}}</a>
+                <div class="usercontainer">
+                    <p>{{this.username}}</p>
+                    <a href="/users/deleteuser/{{this._id}}">Delete {{this.username}}</a>
+                </div>
                 {{/users}}</div>
             <div id="admins"></div>
 

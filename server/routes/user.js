@@ -19,8 +19,7 @@ router.post(
   "/login",
   passport.authenticate("userLogin", {
     failureRedirect: "/login",
-    successRedirect: "/",
-    session: false
+    successRedirect: "/"
   })
 );
 //Renders the Register page
@@ -79,6 +78,7 @@ router.delete("/deleteuser/:id", (req, res) => {
       res.status(400).json({ eMsg: "Couldn't delete user, try again" });
     });
 });
+//route to render the forgot password page
 router.get("/forgot", (req, res) => {
   res.render("userforgot");
 });

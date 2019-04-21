@@ -44,8 +44,6 @@ a {
   float: left;
   padding: 15px;
 }
-#container {
-}
 main {
   margin-left: 17%;
 }
@@ -82,6 +80,7 @@ aside h5 {
 }
 #events {
   grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 #landing h1 {
   text-align: center;
@@ -93,6 +92,10 @@ aside h5 {
   border: 0.5px solid #a0a0a0;
 }
 .dashevent img {
-  width: 20%;
+  width: 100%;
   height: auto;
+}
+#newEventForm {
+  display: grid;
+  grid-template-columns: 1fr;
 }

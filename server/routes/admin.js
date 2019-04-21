@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-router.get("/", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("adminlogin");
 });
 //Main admin account:
@@ -16,9 +16,8 @@ router.get("/", (req, res) => {
 router.post(
   "/auth",
   passport.authenticate("adminLogin", {
-    failureRedirect: "/ticketvendoradmin",
-    successRedirect: "/ticketvendoradmin/dashboard",
-    session: false
+    failureRedirect: "/ticketvendoradmin/login",
+    successRedirect: "/ticketvendoradmin/dashboard"
   })
 );
 router.post("/addadmin", (req, res) => {
@@ -56,7 +55,7 @@ router.post("/addadmin", (req, res) => {
   });
 });
 
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", ensureAuthenticated, (req, res) => {
   Event.find().then(events => {
     User.find({ role: "admin" }).then(admins => {
       User.find({ role: "user" }).then(users => {
@@ -70,4 +69,13 @@ router.get("/dashboard", (req, res) => {
   });
 });
 
+// Access Control
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    req.flash("danger", "Please login");
+    res.redirect("/ticketvendoradmin/login");
+  }
+}
 module.exports = router;
