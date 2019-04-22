@@ -1,0 +1,101 @@
+@font-face {
+  src: url("https://fonts.googleapis.com/css?family=Roboto");
+  font-family: Roboto;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+}
+a {
+  color: #555;
+}
+#align_headerbar {
+  z-index: 100;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  color: #555;
+}
+#logo {
+  display: inline-block;
+  color: #555;
+  padding: 15px;
+}
+#logo a {
+  text-decoration: none;
+}
+#login_reg_button {
+  margin-top: 1%;
+  display: grid;
+  float: right;
+  margin-right: 3%;
+  grid-template-columns: 1fr 1fr;
+}
+#login_reg_button a {
+  text-align: right;
+  text-decoration: none;
+  color: #555;
+  font-size: 1em;
+  float: left;
+  padding: 15px;
+}
+main {
+  margin-left: 17%;
+}
+aside {
+  background: #555;
+  color: #fefefe;
+  position: fixed;
+  width: 15%;
+  height: 100vh;
+  left: 0;
+}
+aside ul {
+  margin-top: 100px;
+  margin-left: 1.2%;
+}
+aside ul li {
+  padding: 7px;
+  margin-top: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+aside h5 {
+  text-align: center;
+  font-style: italic;
+  padding: 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
+#events,
+#users,
+#admins {
+  display: none;
+  padding: 100px;
+}
+#events {
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+#landing h1 {
+  text-align: center;
+  padding-top: 20%;
+}
+.dashevent {
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  border: 0.5px solid #a0a0a0;
+}
+.dashevent img {
+  width: 100%;
+  height: auto;
+}
+#newEventForm {
+  display: grid;
+  grid-template-columns: 1fr;
+}
