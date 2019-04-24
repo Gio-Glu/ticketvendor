@@ -68,6 +68,18 @@ router.post("/register", (req, res) => {
   });
 });
 
+//GET /logout
+router.get('/logout', function(reg, res, next){
+  if(reg.session){
+    reg.session.destroy(function(err){
+      if(err){
+        return next(err);
+      }else{
+        return res.redirect('/');
+      }
+    });
+  }
+});
 //route to delete user
 router.delete("/deleteuser/:id", (req, res) => {
   User.findByIdAndDelete({ _id: req.params.id })
