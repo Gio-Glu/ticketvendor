@@ -34,7 +34,6 @@ const eventSchema = new mongoose.Schema({
   },
   eventImage: {
     type: String,
-    required: true,
     default:
       "https://www.awakeningsfestival.nl/extend/assets/images/mobile/share_19.png"
   }

@@ -23,39 +23,75 @@
             <div id="events">
                 <div>
                     {{#events}}
+                    <p id="delete-event-message"></p>
 
                     <div class="dashevent">
                         <div><img src={{this.eventImage}}></div>
                         <div>
                             <h5>{{this.eventName}}</h5>
-                            <a href="/event/deletevent/{{this._id}}">delete this event</a>
+                            <a onClick=deleteEvent("{{this._id}}")>delete this event</a>
                         </div>
                     </div>
                     {{/events}}
                 </div>
                 <div>
-                    <form id="newEventForm">
-                        <input>
-                        <input>
-                        <input>
-                        <input>
-                        <input>
-                        <input>
-                        <textarea></textarea>
+                    <form id="newEventForm" onSubmit=newEvent(event)>
+                        <p id="add-event-message"></p>
+                        <input type="text" name="eventName" placeholder="Event name" id="eventname">
+                        <input type="text" name="eventDate" placeholder="Date of the event, ex. 24/01/20"
+                            id="eventdate">
+                        <input type="text" name="location" placeholder="Location of the event" id="location">
+                        <select type="text" name="category" id="category">
+                            <option value="festival">Festival</option>
+                            <option value="concert">Concert</option>
+                            <option value="convention">Convention</option>
+                        </select>
+                        <input type="number" name="ticketPrice" placeholder="Price of the tickets" id="price">
+                        <input type="number" name="tickets" placeholder="Amount of tickets" id="amount-tickets">
+                        <input type="text" name="eventImage" id="imageUrl"
+                            placeholder="Url to the image you want as a banner/thubmnail">
+
+                        <textarea type="text" name="description" placholder="Description of the event"
+                            id="description"></textarea>
                         <button type="submit">Add new event</button>
                     </form>
-                    <div id="result"></div>
                 </div>
 
             </div>
             <div id="users">
-                {{#users}}
-                <div class="usercontainer">
-                    <p>{{this.username}}</p>
-                    <a href="/users/deleteuser/{{this._id}}">Delete {{this.username}}</a>
+                <div>
+                    {{#users}}
+                    <div class="usercontainer">
+                        <p>{{this.username}}</p>
+                        <a>Delete {{this.username}}</a>
+                    </div>
+                    {{/users}}
                 </div>
-                {{/users}}</div>
-            <div id="admins"></div>
+                <div>
+                    <form id="newUserForm" onSubmit=newUserSubmit(event, user)>
+                        <input type="text" name="username" id="usernameuser">
+                        <input type="text" name="email" id="emailuser">
+                        <input type="password" name="password" id="passworduser">
+                    </form>
+                </div>
+            </div>
+            <div id="admins">
+                <div>
+                    {{#admins}}
+                    <div class="usercontainer">
+                        <p>{{this.username}}</p>
+                        <a>Delete {{this.username}}</a>
+                    </div>
+                    {{/admins}}
+                </div>
+                <div>
+                    <form id="newUserForm" onSubmit=newUserSubmit(event, admin)>
+                        <input type="text" name="username" id="usernameuser">
+                        <input type="text" name="email" id="emailuser">
+                        <input type="password" name="password" id="passworduser">
+                    </form>
+                </div>
+            </div>
 
 
 

@@ -10,7 +10,6 @@ const hbs = require("handlebars");
 const ehbs = require("express-handlebars");
 const bcrypt = require("bcryptjs");
 const Event = require("../database/models/Event");
-const flash = require("connect-flash");
 const session = require("express-session");
 
 //logging middleware
@@ -44,21 +43,18 @@ app.use(
   session({
     secret: "Frikandelbroodjes in het kwadraat",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    maxAge: 3600000
   })
 );
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-//flash setup
-app.use(flash());
-app.use((req, res, next) => {
-  res.locals.succes_message = req.flash("succes_message");
-  res.locals.error_message = req.flash("error_message");
+app.get("*", (req, res, next) => {
+  res.locals.user = req.user || null;
   next();
 });
-
 //routes setup
 const homeRoute = require("./routes/index");
 const adminRoute = require("./routes/admin");

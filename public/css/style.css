@@ -9,6 +9,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  color: #555;
+}
 #align_headerbar {
   width: 100%;
   display: grid;
@@ -93,7 +96,7 @@ button[type="submit"] {
 }
 
 #title_align {
-  margin-top: 50%;
+  margin-top: 100px;
   text-align: center;
   color: #fff;
 }
@@ -130,16 +133,7 @@ button[type="submit"] {
 #content_align a {
   text-decoration: none;
 }
-@media (min-width: 320px) and (max-width: 760px) {
-  #content_aligin {
-    grid-template-columns: 1fr;
-  }
-}
-@media (min-width: 761px) and (max-width: 1000px) {
-  #content_aligin {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+
 .card {
   box-shadow: 0px 0px 42px -9px #555;
   margin-left: 2.5%;
@@ -175,12 +169,12 @@ button[type="submit"] {
   margin: 10px auto;
 }
 
-a,
+/* a,
 a:visited,
 a:hover,
 a:active {
   color: inherit;
-}
+} */
 /*detail page*/
 #detail-cont {
   padding-top: 100px;
@@ -189,21 +183,30 @@ a:active {
   min-height: 100vh;
 }
 #event {
-  padding: 0 15px 15px;
+  padding: 0 50px 50px;
   width: 95%;
   margin-left: 2.5%;
   background: #ededed;
 }
 #event h1 {
-  padding: 20px;
+  padding: 10px 0;
   font-size: 1.5em;
+  text-transform: uppercase;
 }
 #event img {
   width: 100%;
   height: auto;
 }
-#event p {
-  font-size: 1em;
+.orderbutton {
+  padding: 10px 15px;
+  background: rgb(88, 88, 206);
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  margin-top: 50px;
+}
+.description {
+  font-size: 0.8em;
 }
 #inf-cont {
   padding: 15px;
@@ -216,4 +219,20 @@ a:active {
 .date-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+#map {
+  margin-top: 100px;
+  display: block;
+  width: 100%;
+  /* margin-left: 15%; */
+}
+@media (min-width: 320px) and (max-width: 760px) {
+  #content_aligin {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  #content_aligin {
+    grid-template-columns: 1fr 1fr;
+  }
 }

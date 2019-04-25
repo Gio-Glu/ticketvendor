@@ -22,9 +22,10 @@
                     <p>{{event.eventDate}}</p>
                 </div>
             </div>
-            <p>{{event.description}}</p>
-
-
+            <p class='description'>{{event.description}}</p>
+            <a class="orderbutton" href="/order_ticket/{{event._id}}">Order tickets</a>
+            <iframe id="map" src="https://maps.google.com/maps?q={{event.location}}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </div>
     </section>
 

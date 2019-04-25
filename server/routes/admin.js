@@ -10,9 +10,7 @@ const passport = require("passport");
 router.get("/login", (req, res) => {
   res.render("adminlogin");
 });
-//Main admin account:
-//Username: ticketvendoradmin
-//passord: t,US(fq3A_/-(R3!
+//handle login post request
 router.post(
   "/auth",
   passport.authenticate("adminLogin", {
@@ -69,12 +67,22 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
   });
 });
 
+router.post("/newUser");
+//route to delete user
+router.delete("/deleteuser/:id", (req, res) => {
+  User.findByIdAndDelete({ _id: req.params.id })
+    .then(user => {
+      res.status(200).json({ message: "User deleted succesfully" });
+    })
+    .catch(e => {
+      res.status(400).json({ eMsg: "Couldn't delete user, try again" });
+    });
+});
 // Access Control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    req.flash("danger", "Please login");
     res.redirect("/ticketvendoradmin/login");
   }
 }

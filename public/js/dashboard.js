@@ -1,4 +1,3 @@
-console.log("hello world");
 const eventLink = document.getElementsByClassName("navlink")[0];
 const userLink = document.getElementsByClassName("navlink")[1];
 const adminLink = document.getElementsByClassName("navlink")[2];
@@ -36,41 +35,32 @@ homeLink.addEventListener("click", () => {
 
 const newEvent = event => {
   event.preventDefault();
-  console.log();
+  const eventData = {
+    eventName: document.getElementById("eventname").value,
+    tickets: document.getElementById("amount-tickets").value,
+    ticketPrice: document.getElementById("price").value,
+    location: document.getElementById("location").value,
+    eventImage: document.getElementById("imageUrl").value,
+    category: document.getElementById("category").value,
+    eventDate: document.getElementById("eventdate").value,
+    description: document.getElementById("description").value
+  };
+  fetch("/event/addevent", {
+    credentials: "same-origin",
+    method: "POST",
+    body: JSON.stringify(eventData),
+    headers: new Headers({
+      "Content-Type": "application/json"
+    })
+  }).then(response => console.log(response));
 };
 
-function AJAXform(formID, buttonID, resultID, formMethod = "post") {
-  var selectForm = document.getElementById("newEventForm"); // Select the form by ID.
-  var selectButton = document.getElementById(buttonID); // Select the button by ID.
-  var selectResult = document.getElementById(resultID); // Select result element by ID.
-  var formAction = document.getElementById(formID).getAttribute("action"); // Get the form action.
-  var formInputs = document.getElementById(formID).querySelectorAll("input"); // Get the form inputs.
-
-  function XMLhttp() {
-    var httpRequest = new XMLHttpRequest();
-    var formData = new FormData();
-
-    for (var i = 0; i < formInputs.length; i++) {
-      formData.append(formInputs[i].name, formInputs[i].value); // Add all inputs inside formData().
-    }
-
-    httpRequest.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        selectResult.innerHTML = this.responseText; // Display the result inside result element.
-      }
-    };
-
-    httpRequest.open(formMethod, formAction);
-    httpRequest.send(formData);
-  }
-
-  selectButton.onclick = function() {
-    // If clicked on the button.
-    XMLhttp();
-  };
-
-  selectForm.onsubmit = function() {
-    // Prevent page refresh
-    return false;
-  };
-}
+const deleteEvent = id => {
+  fetch(`/event/deletevent/${id}`, {
+    method: "DELETE",
+    credentials: "same-origin",
+    headers: new Headers({
+      "Content-Type": "application/json"
+    })
+  }).then(response => console.log(response));
+};

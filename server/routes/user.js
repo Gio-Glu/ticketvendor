@@ -18,9 +18,11 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("userLogin", {
-    failureRedirect: "/login",
-    successRedirect: "/"
-  })
+    failureRedirect: "/login"
+  }),
+  (req, res) => {
+    res.redirect("/");
+  }
 );
 //Renders the Register page
 router.get("/register", (req, res) => {
@@ -53,10 +55,6 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(user => {
-              req.flash(
-                "succes_message",
-                "You are now registered and can log in"
-              );
               res.redirect("/auth/login");
             })
             .catch(e => {
@@ -68,16 +66,6 @@ router.post("/register", (req, res) => {
   });
 });
 
-//route to delete user
-router.delete("/deleteuser/:id", (req, res) => {
-  User.findByIdAndDelete({ _id: req.params.id })
-    .then(user => {
-      res.status(200).json({ message: "User deleted succesfully" });
-    })
-    .catch(e => {
-      res.status(400).json({ eMsg: "Couldn't delete user, try again" });
-    });
-});
 //route to render the forgot password page
 router.get("/forgot", (req, res) => {
   res.render("userforgot");
