@@ -64,3 +64,20 @@ const deleteEvent = id => {
     })
   }).then(response => console.log(response));
 };
+const newUserSubmit = type => {
+  event.preventDefault();
+  if (type === "user") {
+    return console.log("user");
+  }
+  if (type === "admin") {
+    return console.log("admin");
+  }
+};
+document.getElementById("newUserForm").addEventListener("submit", event => {
+  event.preventDefault();
+  newUserSubmit("user");
+});
+document.getElementById("newAdminForm").addEventListener("submit", event => {
+  event.preventDefault();
+  newUserSubmit("admin");
+});

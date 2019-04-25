@@ -68,10 +68,10 @@
                     {{/users}}
                 </div>
                 <div>
-                    <form id="newUserForm" onSubmit=newUserSubmit(event, user)>
+                    <form id="newUserForm">
                         <input type="text" name="username" id="usernameuser">
                         <input type="text" name="email" id="emailuser">
-                        <input type="password" name="password" id="passworduser">
+                        <button type="submit">Add new user</button>
                     </form>
                 </div>
             </div>
@@ -85,10 +85,11 @@
                     {{/admins}}
                 </div>
                 <div>
-                    <form id="newUserForm" onSubmit=newUserSubmit(event, admin)>
+                    <form id="newAdminForm">
                         <input type="text" name="username" id="usernameuser">
                         <input type="text" name="email" id="emailuser">
                         <input type="password" name="password" id="passworduser">
+                        <button type="submit">Add new user</button>
                     </form>
                 </div>
             </div>
