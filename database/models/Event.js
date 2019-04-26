@@ -34,7 +34,8 @@ const eventSchema = new mongoose.Schema({
   },
   eventImage: {
     type: String,
-    default: "https://whatsoninjoburg.com/wp-content/uploads/2019/04/party.jpg"
+    default:
+      "https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg"
   }
 });
 

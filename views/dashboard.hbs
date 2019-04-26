@@ -52,7 +52,7 @@
                         <input type="text" name="eventImage" id="imageUrl"
                             placeholder="Url to the image you want as a banner/thubmnail">
 
-                        <textarea type="text" name="description" placholder="Description of the event"
+                        <textarea type="text" name="description" placeholder="Description of the event"
                             id="description"></textarea>
                         <button type="submit">Add new event</button>
                     </form>
@@ -62,7 +62,7 @@
             <div id="users">
                 <div>
                     {{#users}}
-                    <div class="usercontainer">
+                    <div class="dashuser">
                         <p>{{this.username}}</p>
                         <a>Delete {{this.username}}</a>
                     </div>
@@ -80,7 +80,7 @@
             <div id="admins">
                 <div>
                     {{#admins}}
-                    <div class="usercontainer">
+                    <div class="dashadmin">
                         <p>{{this.username}}</p>
                         <a>Delete {{this.username}}</a>
                     </div>

@@ -244,3 +244,10 @@ a:active {
     grid-template-columns: 1fr 1fr;
   }
 }
+.navlinks {
+  text-align: right;
+}
+.navlinks a {
+  display: inline-block;
+  margin: 20px;
+}

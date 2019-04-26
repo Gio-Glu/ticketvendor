@@ -15,7 +15,7 @@ eventLink.addEventListener("click", () => {
   contArr[3].style.display = "none";
 });
 userLink.addEventListener("click", () => {
-  contArr[0].style.display = "block";
+  contArr[0].style.display = "grid";
   contArr[1].style.display = "none";
   contArr[2].style.display = "none";
   contArr[3].style.display = "none";
@@ -23,7 +23,7 @@ userLink.addEventListener("click", () => {
 adminLink.addEventListener("click", () => {
   contArr[0].style.display = "none";
   contArr[1].style.display = "none";
-  contArr[2].style.display = "block";
+  contArr[2].style.display = "grid";
   contArr[3].style.display = "none";
 });
 homeLink.addEventListener("click", () => {
@@ -52,7 +52,7 @@ const newEvent = event => {
     headers: new Headers({
       "Content-Type": "application/json"
     })
-  }).then(response => console.log(response));
+  }).then(response => console.log(response.json));
 };
 
 const deleteEvent = id => {
@@ -62,7 +62,7 @@ const deleteEvent = id => {
     headers: new Headers({
       "Content-Type": "application/json"
     })
-  }).then(response => console.log(response));
+  }).then(response => console.log(response.json()));
 };
 const newUserSubmit = type => {
   event.preventDefault();
@@ -80,7 +80,10 @@ const newUserSubmit = type => {
         "Content-Type": "application/json"
       })
     })
-      .then(response => console.log(response.msg))
+      .then(response => {
+        console.log(response.data);
+        console.log(response.data);
+      })
       .catch(e => console.log(e));
   }
   if (type === "admin") {

@@ -77,16 +77,17 @@ aside h5 {
 #admins {
   display: none;
   padding: 100px;
-}
-#events {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
+
 #landing h1 {
   text-align: center;
   padding-top: 20%;
 }
-.dashevent {
+.dashevent,
+.dashuser,
+.dashadmin {
   grid-template-columns: 1fr 1fr;
   padding: 10px;
   border: 0.5px solid #a0a0a0;
