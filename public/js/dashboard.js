@@ -67,10 +67,39 @@ const deleteEvent = id => {
 const newUserSubmit = type => {
   event.preventDefault();
   if (type === "user") {
-    return console.log("user");
+    const newUser = {
+      username: document.getElementById("usernameuser").value,
+      email: document.getElementById("emailuser").value,
+      password: document.getElementById("passworduser").value
+    };
+    fetch("/ticketvendoradmin/newUser", {
+      credentials: "same-origin",
+      method: "POST",
+      body: JSON.stringify(newUser),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+      .then(response => console.log(response.msg))
+      .catch(e => console.log(e));
   }
   if (type === "admin") {
-    return console.log("admin");
+    const newAdmin = {
+      username: document.getElementById("usernameadmin").value,
+      email: document.getElementById("emailadmin").value,
+      password: document.getElementById("passwordadmin").value
+    };
+
+    fetch("/ticketvendoradmin/addadmin", {
+      credentials: "same-origin",
+      method: "POST",
+      body: JSON.stringify(newAdmin),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+      .then(response => console.log(response.msg))
+      .catch(e => console.log(e));
   }
 };
 document.getElementById("newUserForm").addEventListener("submit", event => {

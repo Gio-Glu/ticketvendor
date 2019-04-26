@@ -34,8 +34,7 @@ const eventSchema = new mongoose.Schema({
   },
   eventImage: {
     type: String,
-    default:
-      "https://www.awakeningsfestival.nl/extend/assets/images/mobile/share_19.png"
+    default: "https://whatsoninjoburg.com/wp-content/uploads/2019/04/party.jpg"
   }
 });
 
